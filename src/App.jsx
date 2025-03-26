@@ -46,8 +46,10 @@ const App = () => {
     try {
       // 構建API端點URL，獲取按人氣排序的電影
       const endpoint = query
-        ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
-        : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+        ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(
+            query
+          )}&language=zh-TW`
+        : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc&language=zh-TW`;
       const response = await fetch(endpoint, API_OPTIONS);
 
       // 檢查響應狀態
@@ -109,8 +111,9 @@ const App = () => {
         <header>
           <img src="./hero.png" alt="Hero banner" />
           <h1>
-            Find <span className="text-gradient">Movies</span> You'll Enjoy
-            Without the Hassle
+            無需費心，
+            <br />
+            找尋你最愛的<span className="text-gradient">電影</span>
           </h1>
           {/* 搜索組件 */}
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -119,7 +122,7 @@ const App = () => {
         {/* 熱門電影部分 */}
         {trendingMovies.length > 0 && (
           <section className="trending">
-            <h2>Trending Movies</h2>
+            <h2>熱門排行</h2>
             <ul>
               {trendingMovies.map((movie, index) => (
                 <li key={movie.$id}>
@@ -133,7 +136,7 @@ const App = () => {
 
         {/* 電影列表部分 */}
         <section className="all-movies">
-          <h2>All Movies</h2>
+          <h2>所有電影</h2>
 
           {isLoading ? (
             <Spinner />
