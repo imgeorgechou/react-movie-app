@@ -1,10 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const MovieCard = ({
-  movie: { title, vote_average, poster_path, release_date, original_language },
+  movie: {
+    title,
+    vote_average,
+    poster_path,
+    release_date,
+    original_language,
+    id,
+  },
 }) => {
   return (
-    <div className="movie-card">
+    <Link
+      to={`/details/${id}`}
+      className="movie-card hover:scale-105 hover:border-purple-800 hover:border-2 transition-transform duration-300"
+    >
       <img
         src={
           poster_path
@@ -28,6 +39,6 @@ export const MovieCard = ({
           {release_date ? release_date.split("-")[0] : "N/A"}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };

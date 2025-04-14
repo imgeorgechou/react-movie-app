@@ -5,21 +5,7 @@ import { Spinner } from "./components/Spinner.jsx";
 import { MovieCard } from "./components/MovieCard.jsx";
 import { useDebounce } from "react-use";
 import { getTrendingMovies, updateSearchCount } from "./appwrite.js";
-
-// TMDB API的基礎URL
-const API_BASE_URL = "https://api.themoviedb.org/3";
-
-// 從環境變量中獲取API密鑰
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-
-// API請求的配置選項
-const API_OPTIONS = {
-  method: "GET",
-  headers: {
-    accept: "application/json",
-    Authorization: `Bearer ${API_KEY}`, // 使用Bearer token進行認證
-  },
-};
+import { API_BASE_URL, API_OPTIONS } from "./config/api";
 
 // App組件：應用的主要組件
 const App = () => {
@@ -136,7 +122,7 @@ const App = () => {
 
         {/* 電影列表部分 */}
         <section className="all-movies">
-          <h2>所有電影</h2>
+          <h2>所有電影（預設為熱門排行）</h2>
 
           {isLoading ? (
             <Spinner />
