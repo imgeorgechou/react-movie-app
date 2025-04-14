@@ -25,7 +25,7 @@
 
 ```bash
 # 克隆專案
-git clone [your-repo-link]
+git clone [https://github.com/imgeorgechou/react-movie-app.git]
 
 # 安裝依賴
 npm install
@@ -33,10 +33,6 @@ npm install
 # 啟動開發服務器
 npm run dev
 ```
-
-## 📸 專案截圖
-
-[此處可以添加應用程式的截圖]
 
 ## 🔑 主要特性
 
