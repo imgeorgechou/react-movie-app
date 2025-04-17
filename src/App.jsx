@@ -6,6 +6,8 @@ import { MovieCard } from "./components/MovieCard.jsx";
 import { useDebounce } from "react-use";
 import { getTrendingMovies, updateSearchCount } from "./appwrite.js";
 import { API_BASE_URL, API_OPTIONS } from "./config/api";
+import { Link } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 // App組件：應用的主要組件
 const App = () => {
@@ -89,10 +91,14 @@ const App = () => {
   // 渲染UI
   return (
     <main>
+      <Toaster position="bottom-center" reverseOrder={false} />
       {/* 背景圖案 */}
       <div className="pattern" />
 
       <div className="wrapper">
+        <nav className="text-white flex justify-end ">
+          <Link to="/favorites">⭐️喜歡的電影</Link>
+        </nav>
         {/* 頁面頭部 */}
         <header>
           <img src="./hero.png" alt="Hero banner" />
